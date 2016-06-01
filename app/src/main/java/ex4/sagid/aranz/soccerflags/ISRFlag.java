@@ -12,8 +12,8 @@ import android.util.Log;
  */
 public class ISRFlag extends Flags {
     private Path path;
-
-    public final String TAG = getClass().getSimpleName();
+    private final String name = "ISRAEL";
+    private final String TAG = getClass().getSimpleName();
 
     //Constructors
     public ISRFlag(Context context) {
@@ -53,6 +53,10 @@ public class ISRFlag extends Flags {
 
         //draw score
         canvas.drawText(getScoreString(), (width/2) - paintS.measureText(getScoreString())/2, height/7, paintS);
+
+        //draw name
+        canvas.drawText(name, (width/2) - paintS.measureText(name)/2, 9*(height/10), paintS);
+
         invalidate();
     }
 

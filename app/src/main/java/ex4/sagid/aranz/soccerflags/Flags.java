@@ -15,13 +15,13 @@ import android.view.View;
  */
 public class Flags extends View {
 
-    public final String TAG = getClass().getSimpleName();
-    public final int TEXT_SIZE = 60;
-    public int left, top, width, height, score;
-    public Paint paintF, paintS;
-    private String finalScore;
-    TypedArray  flagView;
-    private GestureDetector gd;
+    private final String TAG = getClass().getSimpleName();
+    protected final int TEXT_SIZE = 60;
+    protected int left, top, width, height, score;
+    protected Paint paintF, paintS;
+    protected String finalScore;
+    protected TypedArray  flagView;
+    protected GestureDetector gd;
 
     //Constructors
     public Flags(Context context) {

@@ -9,10 +9,8 @@ import android.util.Log;
  * Created by aranz on 01-Jun-16.
  */
 public class JPNFlag extends Flags{
-
-
-
-    public final String TAG = getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
+    private final String name = "JAPAN";
 
 
     //Constructor
@@ -26,6 +24,9 @@ public class JPNFlag extends Flags{
 
         //draw score
         canvas.drawText(getScoreString(), (width/2) - paintS.measureText(getScoreString())/2, height/7, paintS);
+
+        //draw name
+        canvas.drawText(name, (width/2) - paintS.measureText(name)/2, 13*(height/14), paintS);
         invalidate();
     }
 
