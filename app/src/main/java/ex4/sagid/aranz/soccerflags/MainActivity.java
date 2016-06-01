@@ -1,18 +1,16 @@
 package ex4.sagid.aranz.soccerflags;
 
-import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
-
 import java.util.Timer;
 import java.util.TimerTask;
+import android.util.Log;
+
 
 public class MainActivity extends AppCompatActivity {
 
     public final String TAG = getClass().getSimpleName();
-
 
     private final int JPN=-1, ISR=1, TIE=0;
     private final int GAME_TIME = 90, GAME_EXTRA = 15, MILLISECONDS_MULTI = 1000;
@@ -28,13 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        inExtraTime = false;
-
         JPNView = (JPNFlag) findViewById(R.id.JPNFlagView);
         ISRView = (ISRFlag) findViewById(R.id.ISRFlagView);
         timer = (TextView) findViewById(R.id.timer);
         extraTimeView = (TextView)findViewById(R.id.extraTimeView);
 
+        inExtraTime = false;
         time=0;
         timer.setText(""+time);
 
@@ -58,20 +55,13 @@ public class MainActivity extends AppCompatActivity {
                                 extraTimeView.setText(getString(R.string.Extra));
                                 time=0;
                             }
-                            else{
-                                T.cancel();
-                                timer.setText(getString(R.string.GameOver));
-                                setEndMessage(getWinner());
-                            }
+                            else
+                                endGame();
 
                         }
                         //second round is over
                         else if (inExtraTime && time == GAME_EXTRA)
-                        {
-                            timer.setText(getString(R.string.GameOver));
-                            T.cancel();
-                            setEndMessage(getWinner());
-                        }
+                            endGame();
                     }
                 });
             }
@@ -79,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //this method stops timer and sets winner & loser
+    private void endGame(){
+        T.cancel();
+        timer.setText(getString(R.string.GameOver));
+        setEndMessage(getWinner());
+    }
+    //return an INT to represent the winning team (or a tie)
     private int getWinner(){
         if(JPNView.getScore() == ISRView.getScore())
             return TIE;
@@ -88,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             return ISR;
     }
 
+    //sets win/lose/tie message according to score
     private void setEndMessage(int winner){
         if (winner == JPN){
             JPNView.setFinalScore(getString(R.string.Win));
@@ -100,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
         else{
             JPNView.setFinalScore(getString(R.string.Tie));
             ISRView.setFinalScore(getString(R.string.Tie));
-
         }
     }
 }

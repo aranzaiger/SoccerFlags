@@ -15,8 +15,7 @@ public class ISRFlag extends Flags {
 
     public final String TAG = getClass().getSimpleName();
 
-
-
+    //Constructors
     public ISRFlag(Context context) {
         super(context);
         initView();
@@ -34,7 +33,6 @@ public class ISRFlag extends Flags {
 
     @Override
     protected void onDraw(Canvas canvas){
-//        canvas.drawCircle(width/2, height/2, height/3, paintF);
 
         //create and draw both triangles
         paintF.setStrokeWidth(15);
@@ -53,9 +51,7 @@ public class ISRFlag extends Flags {
         canvas.drawLine(left,top+30,left+width, top+30, paintF);
         canvas.drawLine(left,top+height-30,left+width, top+height-30, paintF);
 
-
         //draw score
-        Log.d(TAG, "text size = "+paintS.measureText(getScoreString()));
         canvas.drawText(getScoreString(), (width/2) - paintS.measureText(getScoreString())/2, height/7, paintS);
         invalidate();
     }

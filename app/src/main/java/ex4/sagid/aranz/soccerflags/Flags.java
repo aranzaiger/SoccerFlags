@@ -1,7 +1,6 @@
 package ex4.sagid.aranz.soccerflags;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -22,21 +21,19 @@ public class Flags extends View {
     public Paint paintF, paintS;
     private String finalScore;
     TypedArray  flagView;
-//    private int shapeColor, BGColor, textColor;
     private GestureDetector gd;
 
+    //Constructors
     public Flags(Context context) {
         super(context);
         gd = new GestureDetector(context, new MyGestureListener());
         initView(null);
-
     }
 
     public Flags(Context context, AttributeSet attrs) {
         super(context, attrs);
         gd = new GestureDetector(context, new MyGestureListener());
         initView(attrs);
-
     }
 
     @Override
@@ -49,9 +46,7 @@ public class Flags extends View {
     }
 
     private void initView(AttributeSet attrs){
-
         //get all colors and draw shapes
-
         flagView = getContext().obtainStyledAttributes(attrs, R.styleable.Flags);
         int BGColor = flagView.getColor(R.styleable.Flags_BGColor, Color.WHITE);
         int shapeColor = flagView.getColor(R.styleable.Flags_ShapeColor, Color.BLACK);
