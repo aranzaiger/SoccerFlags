@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SoccerFlags</string>
+    <string name="Win">WINNER</string>
+    <string name="Lose">LOSER</string>
+    <string name="GameOver">GAME OVER</string>
+    <string name="Tie">TIE</string>
+    <string name="Extra">EXTRA TIME</string>
+
+
+</resources>
